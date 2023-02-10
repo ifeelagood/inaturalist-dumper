@@ -1,0 +1,8 @@
+__pycache__/
+exports/
+logs/
+images/
+
+taxa.db
+observation.db
+ids.txt
