@@ -1,5 +1,4 @@
 IMAGE_DIR = "images"
 EXPORT_DIR = "exports"
 LOG_DIR = "logs"
-TAXON_DATABASE = "taxa.db"
-OBS_DATABASE = "observation.db"
+DATABASE = "observation.db"

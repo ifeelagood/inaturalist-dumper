@@ -40,10 +40,13 @@ def load_observations(export_dir : str = EXPORT_DIR):
     # drop duplicates
     df.drop_duplicates(inplace=True)
     
+    # add empty column annotations
+    df["annotations"] = None
 
     # write to database
-    conn = sqlite3.connect(OBS_DATABASE)
+    conn = sqlite3.connect(DATABASE)
     df.to_sql("observations", conn, index=False, if_exists="replace")
+
     conn.commit()
     conn.close()
     
@@ -59,14 +62,11 @@ def get_urls(conn, image_size : str, force : bool = False) -> list:
         name, ext = os.path.splitext(os.path.basename(image_url))
         
         # check for file extensions
-        
         if ext == ".gif":
             continue
-
         if ext == ".":
             ext = ".jpg"
             
-        
         
         if not os.path.exists(os.path.join(IMAGE_DIR, f"{image_id}{ext}")) or force:
             image_url = image_url.replace("medium", image_size)
@@ -136,7 +136,7 @@ if __name__ == "__main__":
     load_observations()
 
     # connect to the database
-    conn = sqlite3.connect(OBS_DATABASE)
+    conn = sqlite3.connect(DATABASE)
 
     # get the urls
     urls = get_urls(conn, args.size, args.force)
