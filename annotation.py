@@ -79,7 +79,7 @@ async def scrape_annotations_from_ids(ids : list, limit : int = 10, proxy : str 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=30, help="Maximum connections")
-    parser.add_argument("--proxy", type=str, default="http://pwsblrrt-rotate:2xwbkzsuxisu@p.webshare.io:80", help="proxy url to use when scraping.")
+    parser.add_argument("--proxy", type=str, default="http://REDACTED", help="proxy url to use when scraping.")
     
     args = parser.parse_args()
 
